@@ -1,0 +1,40 @@
+from logic import expr, tt_true
+
+# List of logical expressions to check
+expressions = [
+    'P | ~P',                  # a
+    'P >> P',                  # b
+    '(P >> P) >> (P >> Q)',    # c
+    '(P | Q) >> P',            # d
+    '((A & B) >> C) <=> (A >> (B >> C))',  # e
+    '((A >> B) >> A) >> A'     # f
+]
+
+# Check validity of each expression
+for i, expression in enumerate(expressions, start=1):
+    is_valid = tt_true(expr(expression))
+    print(f'Expression {chr(96 + i)}: {expression}')
+    print(f'Valid: {is_valid}\n')
+    
+    
+    
+    
+    
+    from logic import expr, tt_true
+
+# List of logical expressions to check
+expressions = [
+    'P | (P | Q)',                      # c
+    'P >> ~~~P',                        # d
+    '(P >> Q) == (~P | Q)',             # e
+    'P >> (P >> Q)',                    # f
+    '(~Q) == (P >> Q)',                 # g
+    'P & (P >> Q) == Q',                # h
+    '(~P) & (Q >> P) == ~Q'             # i
+]
+
+# Check validity of each expression
+for i, expression in enumerate(expressions, start=3):
+    is_valid = tt_true(expr(expression))
+    print(f'Expression {chr(96 + i)}: {expression}')
+    print(f'Valid: {is_valid}\n')
